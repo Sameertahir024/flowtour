@@ -1,16 +1,28 @@
-# FlowTour
+<p align="center">
+  <img src="examples/logo/icon.png" alt="FlowTour Logo" width="96" height="96" style="border-radius: 20px;" />
+</p>
 
-A lightweight, animated product-tour and element-highlight library — the same job as [driver.js](https://driverjs.com), tuned for smoother motion and easy theming.
+<h1 align="center">FlowTour</h1>
 
-- **~4 KB** core, zero dependencies
-- Spotlight and popover **glide** or **morph** smoothly between steps
-- **Aceternity-inspired `morph` animation** with fluid spring transitions and ambient glow
+<p align="center">
+  <strong>A lightweight, animated product-tour and element-highlight library with fluid spring physics and instant theme presets.</strong>
+</p>
+
+<p align="center">
+  <a href="https://sameertahir024.github.io/flowtour/"><strong>⚡ Live Interactive Demo</strong></a>
+</p>
+
+---
+
+- **~4 KB** core, zero runtime dependencies
+- Spotlight and popover **morph**, **glide**, or **focus instantly** between steps
+- **Fluid Morph Animation**: Continuous spring tracking with luminous ambient glow across DOM targets
 - **Theme presets built-in**: `auto`, `dark`, `light`, `glass`, `midnight`
-- **Custom `accentColor`** to seamlessly match your product brand buttons and progress dots
+- **Custom `accentColor` & `width`**: Seamlessly match your brand colors and customize popup dimensions
 - Clickable progress navigation dots with step jumping
 - Real-time scroll repositioning and responsive viewport awareness
 - Keyboard nav (`ArrowRight`, `ArrowLeft`, `Escape`), focus trap, `prefers-reduced-motion` support out of the box
-- Ships ESM, CJS, and a plain `<script>` global build — works with any stack
+- Ships ESM, CJS, and a plain `<script>` global build — works with any framework (React, Next.js, Vue, Svelte, Angular, Vanilla JS)
 
 ## Install
 
@@ -109,7 +121,7 @@ Each `TourStep` takes:
 
 FlowTour includes three finely tuned transition styles:
 
-- **`morph` (Default / Aceternity-inspired)**: Fluid spring cubic-bezier tracking with ambient glow as the spotlight travels across nodes.
+- **`morph` (Default)**: Fluid spring cubic-bezier tracking with luminous ambient bloom as the spotlight travels across DOM nodes.
 - **`glide`**: Classic smooth slide entrance with responsive damping.
 - **`simple`**: Instant, zero-crawl spotlight focus for quick, lightweight transitions.
 

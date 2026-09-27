@@ -1,7 +1,7 @@
 {
   "name": "flowtour",
   "version": "0.1.0",
-  "description": "A lightweight, animated product-tour and element-highlight library. A smoother, themeable alternative to driver.js.",
+  "description": "A lightweight, animated product-tour and element-highlight library with smooth morphing physics and instant theme presets.",
   "author": "sameer tahir <sameertahir024@gmail.com>",
   "homepage": "https://github.com/sameertahir/flowtour#readme",
   "repository": {
@@ -46,7 +46,8 @@
     "highlight",
     "tooltip",
     "guide",
-    "driver.js"
+    "ui-tour",
+    "step-by-step"
   ],
   "license": "MIT",
   "devDependencies": {
