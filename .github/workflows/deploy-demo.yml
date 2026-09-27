@@ -39,11 +39,14 @@ jobs:
       - name: Prepare demo directory
         run: |
           mkdir -p demo-site/dist
+          mkdir -p demo-site/logo
           mkdir -p demo-site/examples/logo
           cp -r dist/* demo-site/dist/
+          cp -r examples/logo/* demo-site/logo/ || true
           cp -r examples/logo/* demo-site/examples/logo/ || true
-          cp examples/basic.html demo-site/index.html
           cp examples/basic.html demo-site/examples/basic.html
+          # Fix paths for root index.html so ../dist/ resolves to ./dist/ and relative links work
+          sed 's|\.\./dist/|dist/|g' examples/basic.html > demo-site/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
