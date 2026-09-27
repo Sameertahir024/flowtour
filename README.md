@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="examples/logo/icon.png" alt="FlowTour Logo" width="96" height="96" style="border-radius: 20px;" />
+  <img src="examples/logo/icon.png" alt="FlowTour Logo" width="140" height="140" style="border-radius: 28px;" />
 </p>
 
 <h1 align="center">FlowTour</h1>
