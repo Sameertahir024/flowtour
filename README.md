@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://sameertahir024.github.io/flowtour/"><strong>⚡ Live Interactive Demo</strong></a>
+  <a href="https://sameertahir024.github.io/flowtour/"><strong> Live Interactive Demo</strong></a>
 </p>
 
 ---
