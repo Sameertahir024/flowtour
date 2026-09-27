@@ -1,0 +1,62 @@
+{
+  "name": "flowtour",
+  "version": "0.1.0",
+  "description": "A lightweight, animated product-tour and element-highlight library. A smoother, themeable alternative to driver.js.",
+  "author": "sameer tahir <sameertahir024@gmail.com>",
+  "homepage": "https://github.com/sameertahir/flowtour#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sameertahir/flowtour.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sameertahir/flowtour/issues"
+  },
+  "type": "module",
+  "main": "dist/flowtour.cjs",
+  "module": "dist/flowtour.js",
+  "types": "dist/flowtour.d.ts",
+  "unpkg": "dist/flowtour.global.js",
+  "style": "dist/flowtour.css",
+  "exports": {
+    ".": {
+      "types": "./dist/flowtour.d.ts",
+      "import": "./dist/flowtour.js",
+      "require": "./dist/flowtour.cjs"
+    },
+    "./flowtour.css": "./dist/flowtour.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "tsup && node scripts/copy-css.js",
+    "dev": "tsup --watch",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.{ts,css}\"",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "product-tour",
+    "onboarding",
+    "walkthrough",
+    "highlight",
+    "tooltip",
+    "guide",
+    "driver.js"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "tsup": "^8.2.4",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "prettier": "^3.3.3",
+    "vitest": "^2.0.5",
+    "jsdom": "^25.0.1"
+  }
+}

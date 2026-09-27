@@ -1,0 +1,364 @@
+/**
+ * FlowTour default theme.
+ * Every visual knob is a CSS custom property — override any of these on `:root`
+ * or on a wrapping element to reskin the tour without touching this file.
+ */
+:root {
+  --ft-accent: #6e56ff;
+  --ft-accent-soft: rgba(110, 86, 255, 0.18);
+  --ft-backdrop: rgba(5, 6, 9, 0.78);
+  --ft-backdrop-blur: 0px;
+  --ft-pop-bg: #1e2029;
+  --ft-pop-fg: #ededf3;
+  --ft-pop-muted: #8c8da0;
+  --ft-pop-border: rgba(255, 255, 255, 0.08);
+  --ft-pop-radius: 14px;
+  --ft-pop-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.55);
+  --ft-pop-width: 296px;
+  --ft-cutout-ring: rgba(110, 86, 255, 0.9);
+  --ft-duration: 0.5s;
+  --ft-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --ft-font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.ft-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: transparent;
+}
+
+.ft-backdrop.on {
+  pointer-events: auto;
+}
+
+.ft-cutout {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  outline: 1.5px solid var(--ft-cutout-ring);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6000px var(--ft-backdrop);
+  transition:
+    top var(--ft-duration) var(--ft-easing),
+    left var(--ft-duration) var(--ft-easing),
+    width var(--ft-duration) var(--ft-easing),
+    height var(--ft-duration) var(--ft-easing),
+    border-radius var(--ft-duration) var(--ft-easing),
+    opacity 0.3s ease;
+}
+
+.ft-cutout.on {
+  opacity: 1;
+}
+
+/* Active Highlighted Target Element (Elevated above sticky navbars / siblings) */
+.ft-highlighted-element {
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+.ft-pop {
+  position: fixed;
+  z-index: 10000;
+  width: var(--ft-pop-width);
+  max-width: calc(100vw - 32px);
+  background: var(--ft-pop-bg);
+  color: var(--ft-pop-fg);
+  border: 1px solid var(--ft-pop-border);
+  border-radius: var(--ft-pop-radius);
+  padding: 18px 18px 16px;
+  box-shadow: var(--ft-pop-shadow);
+  font-family: var(--ft-font);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    top var(--ft-duration) var(--ft-easing),
+    left var(--ft-duration) var(--ft-easing);
+  outline: none;
+}
+
+.ft-pop.on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- Theme Presets --- */
+.ft-theme-light {
+  --ft-pop-bg: #ffffff;
+  --ft-pop-fg: #111827;
+  --ft-pop-muted: #6b7280;
+  --ft-pop-border: rgba(0, 0, 0, 0.12);
+  --ft-pop-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.18);
+  --ft-cutout-ring: rgba(59, 130, 246, 0.9);
+  --ft-accent: #3b82f6;
+}
+
+.ft-theme-light .ft-btn-ghost {
+  color: #4b5563;
+}
+
+.ft-theme-light .ft-btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.ft-theme-glass {
+  --ft-pop-bg: rgba(22, 24, 35, 0.72);
+  --ft-pop-fg: #ffffff;
+  --ft-pop-muted: #9ca3af;
+  --ft-pop-border: rgba(255, 255, 255, 0.16);
+  --ft-pop-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.65);
+  --ft-cutout-ring: rgba(168, 85, 247, 0.95);
+  --ft-accent: #a855f7;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.ft-theme-midnight {
+  --ft-pop-bg: #070913;
+  --ft-pop-fg: #f0f4ff;
+  --ft-pop-muted: #7983a3;
+  --ft-pop-border: rgba(99, 102, 241, 0.2);
+  --ft-pop-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.75);
+  --ft-cutout-ring: rgba(245, 158, 11, 0.95);
+  --ft-accent: #f59e0b;
+}
+
+/* --- Popover directional arrow pointer --- */
+.ft-pop::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--ft-pop-bg);
+  border: 1px solid var(--ft-pop-border);
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+/* Pointing up to target when popover is at the bottom */
+.ft-pop[data-side='bottom']::before {
+  top: -7px;
+  left: var(--ft-arrow-offset, 50%);
+  margin-left: -6px;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* Pointing down to target when popover is at the top */
+.ft-pop[data-side='top']::before {
+  bottom: -7px;
+  left: var(--ft-arrow-offset, 50%);
+  margin-left: -6px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Pointing left to target when popover is on the right */
+.ft-pop[data-side='right']::before {
+  left: -7px;
+  top: var(--ft-arrow-offset, 50%);
+  margin-top: -6px;
+  border-top: none;
+  border-right: none;
+}
+
+/* Pointing right to target when popover is on the left */
+.ft-pop[data-side='left']::before {
+  right: -7px;
+  top: var(--ft-arrow-offset, 50%);
+  margin-top: -6px;
+  border-bottom: none;
+  border-left: none;
+}
+
+/* --- Animation Styles: 'glide' (Classic), 'morph' (Spring & Glow), 'simple' (Instant Spot) --- */
+.ft-anim-glide {
+  transform: scale(0.94) translateY(6px);
+  will-change: top, left, transform, opacity;
+  transition:
+    opacity calc(var(--ft-duration) * 0.7) var(--ft-easing),
+    transform calc(var(--ft-duration) * 0.85) cubic-bezier(0.16, 1, 0.3, 1),
+    top var(--ft-duration) cubic-bezier(0.16, 1, 0.3, 1),
+    left var(--ft-duration) cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ft-anim-glide.on {
+  transform: scale(1) translateY(0);
+}
+
+.ft-anim-morph {
+  transform: scale(0.97);
+  will-change: top, left, width, height, transform, opacity;
+  transition:
+    opacity calc(var(--ft-duration) * 0.5) cubic-bezier(0.25, 1, 0.35, 1),
+    transform var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
+    top var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
+    left var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1);
+}
+.ft-anim-morph.on {
+  transform: scale(1) translateY(0);
+}
+
+/* Simple Style: Instant focus on target without traveling across screen */
+.ft-anim-simple {
+  transform: scale(0.98);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+.ft-anim-simple.on {
+  transform: scale(1);
+}
+
+.ft-cutout.ft-anim-simple {
+  transition: opacity 0.15s ease;
+}
+
+/* Morph Cutout: Continuous fluid spring tracking & ambient bloom */
+.ft-cutout.ft-anim-morph {
+  outline: 2px solid var(--ft-cutout-ring);
+  outline-offset: 5px;
+  will-change: top, left, width, height, border-radius;
+  box-shadow:
+    0 0 0 6000px var(--ft-backdrop),
+    0 0 32px 4px var(--ft-cutout-ring);
+  transition:
+    top var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
+    left var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
+    width var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
+    height var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
+    border-radius calc(var(--ft-duration) * 0.9) cubic-bezier(0.25, 1, 0.35, 1),
+    opacity 0.4s ease;
+}
+
+.ft-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  color: var(--ft-pop-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  padding: 2px;
+}
+
+.ft-eyebrow {
+  color: var(--ft-accent);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.ft-title {
+  font-size: 16px;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.ft-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ft-pop-muted);
+  margin: 0 0 16px;
+}
+
+.ft-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ft-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.ft-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ft-pop-border);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  display: inline-block;
+}
+
+.ft-dot:hover {
+  background: var(--ft-pop-muted);
+  transform: scale(1.2);
+}
+
+.ft-dot-active {
+  background: var(--ft-accent);
+  transform: scale(1.35);
+  cursor: default;
+}
+
+.ft-dot-active:hover {
+  background: var(--ft-accent);
+  transform: scale(1.35);
+}
+
+.ft-btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.ft-btn {
+  border: none;
+  border-radius: 7px;
+  padding: 7px 13px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.12s ease, background 0.15s ease;
+}
+
+.ft-btn:active {
+  transform: scale(0.96);
+}
+
+.ft-btn-ghost {
+  background: transparent;
+  color: var(--ft-pop-muted);
+}
+
+.ft-btn-primary {
+  background: var(--ft-accent);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ft-backdrop,
+  .ft-cutout,
+  .ft-pop,
+  .ft-anim-glide,
+  .ft-anim-fade,
+  .ft-anim-zoom,
+  .ft-anim-slide {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ft-backdrop,
+  .ft-cutout,
+  .ft-pop,
+  .ft-anim-glide,
+  .ft-anim-fade,
+  .ft-anim-zoom,
+  .ft-anim-slide {
+    transition-duration: 0.01ms !important;
+  }
+}
