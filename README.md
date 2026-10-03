@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="examples/logo/icon.png" alt="FlowTour Logo" width="140" height="140" style="border-radius: 28px;" />
+  <img src="https://raw.githubusercontent.com/Sameertahir024/flowtour/main/examples/logo/icon.png" alt="FlowTour Logo" width="140" height="140" style="border-radius: 28px;" />
 </p>
 
 <h1 align="center">FlowTour</h1>
@@ -15,7 +15,7 @@
 ---
 
 <p align="center">
-  <img src="examples/image/FlowTour.png" alt="FlowTour Preview" width="100%" />
+  <img src="https://raw.githubusercontent.com/Sameertahir024/flowtour/main/examples/image/FlowTour.png" alt="FlowTour Preview" width="100%" />
 </p>
 
 ## Install
