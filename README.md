@@ -14,15 +14,9 @@
 
 ---
 
-- **~4 KB** core, zero runtime dependencies
-- Spotlight and popover **morph**, **glide**, or **focus instantly** between steps
-- **Fluid Morph Animation**: Continuous spring tracking with luminous ambient glow across DOM targets
-- **Theme presets built-in**: `auto`, `dark`, `light`, `glass`, `midnight`
-- **Custom `accentColor` & `width`**: Seamlessly match your brand colors and customize popup dimensions
-- Clickable progress navigation dots with step jumping
-- Real-time scroll repositioning and responsive viewport awareness
-- Keyboard nav (`ArrowRight`, `ArrowLeft`, `Escape`), focus trap, `prefers-reduced-motion` support out of the box
-- Ships ESM, CJS, and a plain `<script>` global build — works with any framework (React, Next.js, Vue, Svelte, Angular, Vanilla JS)
+<p align="center">
+  <img src="examples/image/maimimage.png" alt="FlowTour Preview" width="100%" />
+</p>
 
 ## Install
 
