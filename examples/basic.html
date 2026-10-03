@@ -887,7 +887,7 @@
     </div>
 
     <h1 class="hero-title" id="hero-title">
-      Guide users effortlessly with <span class="gradient-text">fluid spotlight tours</span>
+      Guide users effortlessly with <span class="gradient-text">fluid <span id="hero-spotlight-text">spotlight tours</span></span>
     </h1>
 
     <p class="hero-subtitle" id="hero-subtitle">
@@ -1387,16 +1387,40 @@ themedTour.<span class="syn-func">drive</span>();`
           {
             element: '#brand-logo',
             popover: {
-              title: 'Welcome to FlowTour! 🐸',
-              description: 'Lightweight, zero-dependency product walkthrough engine with modern aesthetics.',
+              title: 'FlowTour Logo 🐸',
+              description: 'Welcome to FlowTour! Modern, lightweight product tours and highlights.',
               side: 'bottom'
             }
           },
           {
             element: '#theme-toggle',
             popover: {
-              title: 'Theme Switching 🌙 / ☀️',
-              description: 'Seamless Dark & Light mode integration out of the box.',
+              title: 'Dark / Light Mode 🌙☀️',
+              description: 'Easily toggle between themes or let FlowTour adapt automatically.',
+              side: 'bottom'
+            }
+          },
+          {
+            element: '#hero-title',
+            popover: {
+              title: 'Main Headline 🚀',
+              description: 'Guide users effortlessly across your whole web application.',
+              side: 'bottom'
+            }
+          },
+          {
+            element: '#hero-spotlight-text',
+            popover: {
+              title: 'Spotlight Tours 🌟',
+              description: 'Smooth morphing spotlight focus with glowing borders and seamless step transitions.',
+              side: 'bottom'
+            }
+          },
+          {
+            element: '#hero-subtitle',
+            popover: {
+              title: 'Feature Summary ⚡',
+              description: 'Zero-dependency, customizable product walkthroughs with smooth morphing physics, smart auto-positioning, and instant theme presets.',
               side: 'bottom'
             }
           },
@@ -1404,31 +1428,23 @@ themedTour.<span class="syn-func">drive</span>();`
             element: '#card-morph',
             popover: {
               title: 'Morph & Glide Physics ⚡',
-              description: 'Watch the spotlight fluidly travel across the screen with luminous ambient bloom.',
+              description: 'Continuous spring transitions with luminous ambient glow that sweeps across any DOM node in path.',
               side: 'top'
             }
           },
           {
-            element: '#code-demo-window',
+            element: '#card-theming',
             popover: {
-              title: 'Interactive Code Demo 💻',
-              description: 'Simple 5-minute setup with rich TypeScript APIs and customizable options.',
-              side: 'top'
-            }
-          },
-          {
-            element: '#frameworks-bar',
-            popover: {
-              title: 'Universal Compatibility 🌐',
-              description: 'Works effortlessly with React, Next.js, Vue, Svelte, Solid, Angular, or Vanilla JS.',
+              title: 'Instant Theming Presets 🎨',
+              description: 'Built-in support for Dark, Light, Frosted Glass, and Midnight themes with brand accent customization.',
               side: 'top'
             }
           },
           {
             element: '#license-card',
             popover: {
-              title: '100% Free & Open Source 📜',
-              description: 'MIT licensed for unlimited personal and commercial products with no attribution required.',
+              title: '100% Free & Open Source ✨',
+              description: 'FlowTour is free and open source under the MIT license for unlimited personal and commercial projects.',
               side: 'top'
             }
           }

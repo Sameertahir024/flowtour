@@ -16,8 +16,8 @@
   --ft-pop-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.55);
   --ft-pop-width: 296px;
   --ft-cutout-ring: rgba(110, 86, 255, 0.9);
-  --ft-duration: 0.5s;
-  --ft-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --ft-duration: 0.45s;
+  --ft-easing: cubic-bezier(0.16, 1, 0.3, 1);
   --ft-font: system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
@@ -27,10 +27,13 @@
   z-index: 9998;
   pointer-events: none;
   background: transparent;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
 .ft-backdrop.on {
   pointer-events: auto;
+  opacity: 1;
 }
 
 .ft-cutout {
@@ -38,15 +41,15 @@
   z-index: 9999;
   pointer-events: none;
   opacity: 0;
-  outline: 1.5px solid var(--ft-cutout-ring);
-  outline-offset: 4px;
+  box-sizing: border-box;
+  border: 1.5px solid var(--ft-cutout-ring);
   box-shadow: 0 0 0 6000px var(--ft-backdrop);
   transition:
     top var(--ft-duration) var(--ft-easing),
     left var(--ft-duration) var(--ft-easing),
     width var(--ft-duration) var(--ft-easing),
     height var(--ft-duration) var(--ft-easing),
-    border-radius var(--ft-duration) var(--ft-easing),
+    border-radius calc(var(--ft-duration) * 0.9) var(--ft-easing),
     opacity 0.3s ease;
 }
 
@@ -73,15 +76,19 @@
   box-shadow: var(--ft-pop-shadow);
   font-family: var(--ft-font);
   opacity: 0;
+  transform: scale(0.96) translateY(4px);
   pointer-events: none;
   transition:
     top var(--ft-duration) var(--ft-easing),
-    left var(--ft-duration) var(--ft-easing);
+    left var(--ft-duration) var(--ft-easing),
+    opacity 0.25s ease,
+    transform var(--ft-duration) var(--ft-easing);
   outline: none;
 }
 
 .ft-pop.on {
   opacity: 1;
+  transform: scale(1) translateY(0);
   pointer-events: auto;
 }
 
@@ -126,7 +133,7 @@
   --ft-accent: #f59e0b;
 }
 
-/* --- Popover directional arrow pointer --- */
+/* --- Popover directional arrow pointer with smooth sliding --- */
 .ft-pop::before {
   content: '';
   position: absolute;
@@ -136,6 +143,9 @@
   border: 1px solid var(--ft-pop-border);
   transform: rotate(45deg);
   z-index: -1;
+  transition:
+    left var(--ft-duration) var(--ft-easing),
+    top var(--ft-duration) var(--ft-easing);
 }
 
 /* Pointing up to target when popover is at the bottom */
@@ -176,26 +186,24 @@
 
 /* --- Animation Styles: 'glide' (Classic), 'morph' (Spring & Glow), 'simple' (Instant Spot) --- */
 .ft-anim-glide {
-  transform: scale(0.94) translateY(6px);
   will-change: top, left, transform, opacity;
   transition:
     opacity calc(var(--ft-duration) * 0.7) var(--ft-easing),
-    transform calc(var(--ft-duration) * 0.85) cubic-bezier(0.16, 1, 0.3, 1),
-    top var(--ft-duration) cubic-bezier(0.16, 1, 0.3, 1),
-    left var(--ft-duration) cubic-bezier(0.16, 1, 0.3, 1);
+    transform var(--ft-duration) var(--ft-easing),
+    top var(--ft-duration) var(--ft-easing),
+    left var(--ft-duration) var(--ft-easing);
 }
 .ft-anim-glide.on {
   transform: scale(1) translateY(0);
 }
 
 .ft-anim-morph {
-  transform: scale(0.97);
   will-change: top, left, width, height, transform, opacity;
   transition:
-    opacity calc(var(--ft-duration) * 0.5) cubic-bezier(0.25, 1, 0.35, 1),
-    transform var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
-    top var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
-    left var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1);
+    opacity calc(var(--ft-duration) * 0.6) ease,
+    transform var(--ft-duration) var(--ft-easing),
+    top var(--ft-duration) var(--ft-easing),
+    left var(--ft-duration) var(--ft-easing);
 }
 .ft-anim-morph.on {
   transform: scale(1) translateY(0);
@@ -203,34 +211,31 @@
 
 /* Simple Style: Instant focus on target without traveling across screen */
 .ft-anim-simple {
-  transform: scale(0.98);
   transition:
-    opacity 0.18s ease,
-    transform 0.18s ease;
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 .ft-anim-simple.on {
   transform: scale(1);
 }
 
 .ft-cutout.ft-anim-simple {
-  transition: opacity 0.15s ease;
+  transition: opacity 0.18s ease;
 }
 
 /* Morph Cutout: Continuous fluid spring tracking & ambient bloom */
 .ft-cutout.ft-anim-morph {
-  outline: 2px solid var(--ft-cutout-ring);
-  outline-offset: 5px;
   will-change: top, left, width, height, border-radius;
   box-shadow:
     0 0 0 6000px var(--ft-backdrop),
-    0 0 32px 4px var(--ft-cutout-ring);
+    0 0 24px -2px var(--ft-cutout-ring);
   transition:
-    top var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
-    left var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
-    width var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
-    height var(--ft-duration) cubic-bezier(0.25, 1, 0.35, 1),
-    border-radius calc(var(--ft-duration) * 0.9) cubic-bezier(0.25, 1, 0.35, 1),
-    opacity 0.4s ease;
+    top var(--ft-duration) var(--ft-easing),
+    left var(--ft-duration) var(--ft-easing),
+    width var(--ft-duration) var(--ft-easing),
+    height var(--ft-duration) var(--ft-easing),
+    border-radius calc(var(--ft-duration) * 0.9) var(--ft-easing),
+    opacity 0.35s ease;
 }
 
 .ft-close {

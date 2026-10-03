@@ -150,7 +150,7 @@ export function createTour(userConfig: TourConfig): TourInstance {
     const showRing = step.showRing ?? config.showRing ?? true;
     const ringColor = step.ringColor ?? config.ringColor ?? 'var(--ft-cutout-ring)';
     const ringWidth = step.ringWidth ?? config.ringWidth ?? 1.5;
-    cutout.style.outline = showRing ? `${ringWidth}px solid ${ringColor}` : 'none';
+    cutout.style.border = showRing ? `${ringWidth}px solid ${ringColor}` : 'none';
 
     const popRect = pop.getBoundingClientRect();
     const placement = placePopover(
