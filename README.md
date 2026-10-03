@@ -15,7 +15,7 @@
 ---
 
 <p align="center">
-  <img src="examples/image/maimimage.png" alt="FlowTour Preview" width="100%" />
+  <img src="examples/image/FlowTour.png" alt="FlowTour Preview" width="100%" />
 </p>
 
 ## Install
