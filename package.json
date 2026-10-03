@@ -1,6 +1,6 @@
 {
   "name": "flowtour",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A lightweight, animated product-tour and element-highlight library with smooth morphing physics and instant theme presets.",
   "author": "sameer tahir <sameertahir024@gmail.com>",
   "homepage": "https://sameertahir024.github.io/flowtour/",
