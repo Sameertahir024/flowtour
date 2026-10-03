@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "description": "A lightweight, animated product-tour and element-highlight library with smooth morphing physics and instant theme presets.",
   "author": "sameer tahir <sameertahir024@gmail.com>",
-  "homepage": "https://github.com/sameertahir/flowtour#readme",
+  "homepage": "https://github.com/Sameertahir024/flowtour#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sameertahir/flowtour.git"
+    "url": "git+https://github.com/Sameertahir024/flowtour.git"
   },
   "bugs": {
-    "url": "https://github.com/sameertahir/flowtour/issues"
+    "url": "https://github.com/Sameertahir024/flowtour/issues"
   },
   "type": "module",
   "main": "dist/flowtour.cjs",
